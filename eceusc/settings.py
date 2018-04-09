@@ -25,7 +25,10 @@ SECRET_KEY = '_bduoj0=kx&26jf_359_#p1b4o(h44lu9t2l+ra+r!qnpd4^yi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+ 'peaceful-river-18332.herokuapp.com',        
+ 'eceusc.herokuapp.com',        
+]
 
 
 # Application definition
