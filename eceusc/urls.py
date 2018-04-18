@@ -18,5 +18,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path('messengerbot/', include('messengerbot.urls')),
+    path('slack/', include('slack.urls')),
     path('admin/', admin.site.urls),
 ]

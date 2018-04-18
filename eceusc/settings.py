@@ -26,8 +26,9 @@ SECRET_KEY = '_bduoj0=kx&26jf_359_#p1b4o(h44lu9t2l+ra+r!qnpd4^yi'
 DEBUG = True
 
 ALLOWED_HOSTS = [
- 'peaceful-river-18332.herokuapp.com',        
- 'eceusc.herokuapp.com',        
+ 'peaceful-river-18332.herokuapp.com',
+ 'eceusc.herokuapp.com',
+ '*',
 ]
 
 
