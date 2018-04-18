@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-
+from . import views
 urlpatterns = [
-    path('messengerbot/', include('messengerbot.urls')),
-    path('slack/', include('slack.urls')),
-    path('admin/', admin.site.urls),
+    path('messengerbot/', include('messengerbot.urls'), name='messengerbot'),
+    path('slack/', include('slack.urls'), name='slack'),
+    path('admin/', admin.site.urls,name='admin'),
+    path('', views.index, name='index'),
 ]
