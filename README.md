@@ -30,9 +30,10 @@ Whatever is on the `master` branch on this repo gets directly pushed to our publ
 ### Current Projects
 
 
-#### [Slack Bot](slack/README.md)
+#### [Slack Bot](slack/)
 
-#### [Messenger Bot](messengerbot/README.md)
+#### [Messenger Bot](messengerbot/)
+
 
 ## Contributing
 
