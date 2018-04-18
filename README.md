@@ -29,11 +29,14 @@ Whatever is on the `master` branch on this repo gets directly pushed to our publ
 
 ### Current Projects
 
-#### Slack Bot
 
-Location: `slack/`
+<details><summary><h4>Slack Bot</h4></summary>
+<p> Location: `slack/`
 
 Goal: Help automate interal tasks in the ECE USC Slack channel
+</p>
+</details>
+
 
 #### Messenger Bot
 
