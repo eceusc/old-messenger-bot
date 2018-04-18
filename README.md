@@ -30,20 +30,9 @@ Whatever is on the `master` branch on this repo gets directly pushed to our publ
 ### Current Projects
 
 
-<details><summary><h4>Slack Bot</h4></summary>
-<p> Location: `slack/`
+#### [Slack Bot](slack/README.md)
 
-Goal: Help automate interal tasks in the ECE USC Slack channel
-</p>
-</details>
-
-
-#### Messenger Bot
-
-Location: `messengerbot/`
-
-Goal: Create a useful resource for ECE students to interact with the council and other ECE students
-
+#### [Messenger Bot](messengerbot/README.md)
 
 ## Contributing
 
