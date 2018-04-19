@@ -1,8 +1,7 @@
 # find.py
 
 def process(words):
-    role = words[0].lower()
-    
+    role = words[1].lower()
     if role == 'president':
         return 'Alex Garcia'
     else:
