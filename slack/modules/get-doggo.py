@@ -7,7 +7,7 @@ def process(words):
             "text":"here you go",
             "attachments": [
                 {
-                    "image_url": r.get('message'),
+                    "image_url": r.get('url'),
                 },
              ]
         }
