@@ -15,7 +15,7 @@ install: ; ( \
 	pip3 install -r requirements.txt; \
   )
 run: ; ( \
-	python3 manage.py runserver 8000 &  \
+	python3 manage.py runserver 8000;  \
 	)
 ngrok: ; ( \
 	~/ngrok http 8000; \
