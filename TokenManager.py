@@ -27,8 +27,9 @@ class TokenManager():
         try:
             tokens = json.load(open('config.json')).get('tokens')
             for tok_key in tokens:
-                self.tokens[tok_key] = d.get(tok_key)
+                self.tokens[tok_key] = tokens.get(tok_key)
         except Exception as e:
+            print(e)
             print('No config.json available, continuing...')
 
         return

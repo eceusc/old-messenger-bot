@@ -20,7 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_bduoj0=kx&26jf_359_#p1b4o(h44lu9t2l+ra+r!qnpd4^yi'
+# https://docs.djangoproject.com/en/2.0/ref/settings/#secret-key
+from TokenManager import TokenManager
+tm = TokenManager()
+SECRET_KEY = tm.get('DJANGO_TOKEN') or 'CHANGE_ME_TO_LARGE_RANDOM_VALUE'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -28,6 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
  'peaceful-river-18332.herokuapp.com',
  'eceusc.herokuapp.com',
+ 'ngrok.io',
  '*',
 ]
 
