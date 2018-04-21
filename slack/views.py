@@ -5,7 +5,9 @@ from django.views.decorators.csrf import csrf_exempt
 import os, sys
 from slack.modules import * 
 
-SLACK_TOKEN = os.environ['SLACK_TOKEN']
+from TokenManager import TokenManager
+tm = TokenManager()
+SLACK_TOKEN = tm.get('SLACK_TOKEN')
 
 def index(request):
     return HttpResponse('Front page of ECEUSC Slack Bot should go here!')
