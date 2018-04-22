@@ -46,7 +46,5 @@ Want to contribute to our projects? Awesome! Follow these instructions to make s
 5. Your PR will be reviewed and hopefully merged in! 
 
 ## Todo (and in progress)
-
--[ ] Get a HelloWorld Messenger Bot up
-
--[ ] Create template for Slack Messages
+- [ ] Get a HelloWorld Messenger Bot up
+- [ ] Create template for Slack Messages
