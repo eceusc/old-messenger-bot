@@ -11,7 +11,7 @@ def main():
     args = []
     if len(sys.argv) > 2:
         args = sys.argv[2:]
-    args.insert(0, cmd_test)
+    #args.insert(0, cmd_test)
 
     print('\n================== BEGIN TEST =====================')
     print('Testing the process function inside "{}"...'.format(cmd_test))
