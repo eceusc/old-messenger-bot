@@ -3,6 +3,7 @@ __all__ = [
     'galex',
     'find',
     'get-doggo',
+    'tomi',
     'julius',
     'hassan',
     'victor',
