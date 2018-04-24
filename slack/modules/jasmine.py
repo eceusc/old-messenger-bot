@@ -4,6 +4,7 @@ def process(words):
     msg = 'Right now it is: ' +str(datetime.datetime.now()) + 'and Jasmine LOVES Costco'
     if words==[]:
         return msg 
-    if words[0]=='Hello':
+    if words[0]=='hello':
         return 'Hey to you too!'
-
+    else:
+        return msg
