@@ -4,4 +4,8 @@ __all__ = [
     'find',
     'get-doggo',
     'julius',
+    'hassan',
+    'victor',
+    'chau',
+    'jasmine',
 ]
