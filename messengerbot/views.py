@@ -1,7 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from django.http import HttpResponse
-import os
+import os, json
 from messengerbot import receive
 
 from TokenManager import TokenManager
@@ -24,10 +24,11 @@ def webhook(request):
             return HttpResponse('ERROR')
             
     elif request.method == 'POST':
-        obj = request.POST.get('object')
-
+        data = json.loads(request.body.decode("utf-8") )
+        
+        obj = data.get('object')
         if obj == 'page':
-            for entry in request.POST.get('entry'):
+            for entry in data.get('entry'):
                 for msg_event in entry.get('messaging'):
                     receive.handleMessage(msg_event)
         else:

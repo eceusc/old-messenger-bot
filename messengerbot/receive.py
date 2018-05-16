@@ -1,3 +1,4 @@
+from . import send 
 
 def handleMessage(msg_event):
     if msg_event.get('message'):
@@ -8,7 +9,14 @@ def handleMessage(msg_event):
         handle_referral(msg_event)
 
 def handle_text(msg_event):
-    
+    send.send_message({
+      "messaging_type": "RESPONSE",
+      "recipient": {
+        "id": msg_event.get('sender').get('id')
+      },
+      "message": {
+        "text": msg_event.get('message').get('text')[::-1].upper()      }
+    })
     return
 def handle_postback(msg_event):
     
