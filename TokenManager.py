@@ -1,7 +1,11 @@
 import json
 import os
 
-ENV_TOKEN_KEYS = ['MESSENGER_VERIFY_TOKEN', 'SLACK_TOKEN']
+ENV_TOKEN_KEYS = [
+    'MESSENGER_VERIFY_TOKEN', 
+    'MESSENGER_ACCESS_TOKEN', 
+    'SLACK_TOKEN',
+]
 
 def singleton(cls):
     instances = {}
