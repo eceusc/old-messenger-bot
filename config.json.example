@@ -1,0 +1,8 @@
+{
+  "tokens": {
+    "MESSENGER_VERIFY_TOKEN" : "", 
+    "SLACK_TOKEN" : "",
+    "DJANGO_TOKEN" : "",
+    "MESSENGER_ACCESS_TOKEN":""
+  }
+} 
