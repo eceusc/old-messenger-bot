@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import os, json
 from messengerbot import receive
+from messengerbot.tasks import handleMessageEvent
+import datetime
 
 from TokenManager import TokenManager
 tm = TokenManager()
@@ -13,6 +15,7 @@ def index(request):
 
 @csrf_exempt
 def webhook(request):
+    print('hit webhook')
     if request.method == 'GET':
         verify_token = request.GET.get('hub.verify_token')
         
@@ -30,7 +33,9 @@ def webhook(request):
         if obj == 'page':
             for entry in data.get('entry'):
                 for msg_event in entry.get('messaging'):
-                    receive.handleMessage(msg_event)
+                    print('handlin at %s' % (str(datetime.datetime.now())))
+                    #receive.handleMessage(msg_event)
+                    handleMessageEvent.delay(msg_event)
         else:
             return HttpResponse('this is weird...')
     return HttpResponse(status=200)

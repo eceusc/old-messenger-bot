@@ -1,7 +1,7 @@
 from . import send 
 from .models import User
 from .Messenger import TextMessage
-
+from .tasks import handleMessageEvent
 def handleMessage(msg_event):
     if msg_event.get('message'):
         handle_text(msg_event)

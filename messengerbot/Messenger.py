@@ -8,9 +8,37 @@ def main():
     msg = ImageMessage('this is the url', psid=1231232)
     print(msg.serialize())
 
+class SenderAction(Enum):
+    MARK_SEEN = 'mark_seen'
+    TYPING_OFF = 'typing_off'
+    TYPING_ON = 'typing_on'
+
 class MessagingType(Enum):
     RESPONSE = 'RESPONSE'
 
+class SenderActionMessage():
+    def __init__(self, recipient={}, sender_action=SenderAction.MARK_SEEN, **kwargs):
+        self.recipient = recipient
+        self.sender_action = sender_action
+
+        if kwargs.get('psid') is not None:
+            self.recipient = { 'id': kwargs.get('psid')}
+        if kwargs.get('phone_number') is not None:
+            self.recipient = { 'phone_number': kwargs.get('phone_number')}
+        return
+
+    def __str__(self):
+        s = self.serialize()
+        print(s)
+        print('asdffdsa')
+        print(json.dumps(s))
+        return json.dumps(self.serialize())
+
+    def serialize(self):
+        return {
+            'recipient':self.recipient,
+            'sender_action':self.sender_action.value
+        }
 class Message():
     def __init__( self, 
                 messaging_type=MessagingType.RESPONSE,
