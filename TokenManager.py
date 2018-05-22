@@ -7,7 +7,11 @@ ENV_TOKEN_KEYS = [
     'DJANGO_TOKEN',
     'SLACK_TOKEN',
     'DATABASE_URL',
-    'REDIS_URL'
+    'REDIS_URL',
+    'EMAIL_HOST',
+    'EMAIL_HOST_PASSWORD',
+    'EMAIL_HOST_USER',
+    'EMAIL_PORT'
 ]
 
 def singleton(cls):

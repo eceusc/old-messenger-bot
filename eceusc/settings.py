@@ -35,7 +35,13 @@ ALLOWED_HOSTS = [
  'ngrok.io',
  '*',
 ]
+import socket
+HOSTNAME = None
 
+try:
+    HOSTNAME = socket.gethostname()
+except:
+    HOSTNAME = 'localhost'
 
 # Application definition
 
@@ -147,3 +153,10 @@ CELERYD_TASK_SOFT_TIME_LIMIT = 60
 CELERY_TASK_SOFT_TIME_LIMIT = 60
 CELERY_REDIS_MAX_CONNECTIONS = 20
 CELERY_CELERY_REDIS_MAX_CONNECTIONS = 20
+
+EMAIL_HOST = tm.get('EMAIL_HOST')
+EMAIL_HOST_PASSWORD = tm.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = tm.get('EMAIL_HOST_USER')
+EMAIL_PORT = tm.get('EMAIL_PORT')
+EMAIL_USE_TLS = True
+
