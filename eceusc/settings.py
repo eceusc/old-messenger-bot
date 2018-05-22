@@ -23,6 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # https://docs.djangoproject.com/en/2.0/ref/settings/#secret-key
 from TokenManager import TokenManager
 tm = TokenManager()
+
 SECRET_KEY = tm.get('DJANGO_TOKEN') or 'CHANGE_ME_TO_LARGE_RANDOM_VALUE'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -34,7 +35,13 @@ ALLOWED_HOSTS = [
  'ngrok.io',
  '*',
 ]
+import socket
+HOSTNAME = None
 
+try:
+    HOSTNAME = socket.gethostname()
+except:
+    HOSTNAME = 'localhost'
 
 # Application definition
 
@@ -46,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'messengerbot',
+    'eceusc',
 ]
 
 MIDDLEWARE = [
@@ -89,7 +97,7 @@ DATABASES = {
     }
 }
 
-if os.environ.get('DATABASE_URL') is not None:
+if tm.get('DATABASE_URL') is not None:
     import dj_database_url
     print("using database url env var...")
     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
@@ -134,3 +142,21 @@ STATIC_URL = '/static/'
 
 #me lol
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+CELERY_BROKER_URL = tm.get('REDIS_URL') or 'redis://localhost:6379'
+#CELERY_RESULT_BACKEND = tm.get('REDIS_URL') or 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+#CELERY_TIMEZONE = 'Africa/Nairobi'
+CELERYD_TASK_SOFT_TIME_LIMIT = 60
+CELERY_TASK_SOFT_TIME_LIMIT = 60
+CELERY_REDIS_MAX_CONNECTIONS = 20
+CELERY_CELERY_REDIS_MAX_CONNECTIONS = 20
+
+EMAIL_HOST = tm.get('EMAIL_HOST')
+EMAIL_HOST_PASSWORD = tm.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = tm.get('EMAIL_HOST_USER')
+EMAIL_PORT = tm.get('EMAIL_PORT')
+EMAIL_USE_TLS = True
+

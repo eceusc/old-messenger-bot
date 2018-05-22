@@ -1,6 +1,7 @@
 from . import send 
 from .models import User
-
+from .Messenger import TextMessage
+from .tasks import handleMessageEvent
 def handleMessage(msg_event):
     if msg_event.get('message'):
         handle_text(msg_event)
@@ -18,14 +19,8 @@ def handle_text(msg_event):
         u = User(psid=sender)
         u.save()
     print('after all that', u)
-    send.send_message({
-      "messaging_type": "RESPONSE",
-      "recipient": {
-        "id": msg_event.get('sender').get('id')
-      },
-      "message": {
-        "text": msg_event.get('message').get('text')[::-1].upper()      }
-    })
+    msg = str(u) + ' ' + msg_event.get('message').get('text')[::-1].upper()
+    send.send_message(TextMessage(text=msg, psid=sender))
     return
 def handle_postback(msg_event):
     

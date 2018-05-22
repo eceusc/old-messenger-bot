@@ -4,7 +4,14 @@ import os
 ENV_TOKEN_KEYS = [
     'MESSENGER_VERIFY_TOKEN', 
     'MESSENGER_ACCESS_TOKEN', 
+    'DJANGO_TOKEN',
     'SLACK_TOKEN',
+    'DATABASE_URL',
+    'REDIS_URL',
+    'EMAIL_HOST',
+    'EMAIL_HOST_PASSWORD',
+    'EMAIL_HOST_USER',
+    'EMAIL_PORT'
 ]
 
 def singleton(cls):
@@ -24,18 +31,21 @@ class TokenManager():
         
         # Add env vars first
         for key in ENV_TOKEN_KEYS:
-            self.tokens[key] = os.environ.get(key)
+            env_token = os.environ.get(key)
+            if env_token is not None and len(env_token) > 0:
+                self.tokens[key] = env_token
 
-        # See if config.json has everythin
+        # See if config.json has anything
         # None: config.json tokens will replace env var token if same name
         try:
             tokens = json.load(open('config.json')).get('tokens')
             for tok_key in tokens:
-                self.tokens[tok_key] = tokens.get(tok_key)
+                file_token = tokens.get(tok_key)
+                if file_token is not None and len(file_token) > 0:
+                    self.tokens[tok_key] = file_token
         except Exception as e:
-            print(e)
-            print('No config.json available, continuing...')
-
+            print(e, 'No config.json available, continuing...')
+        
         return
     
     def get(self, key=None):
